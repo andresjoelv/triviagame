@@ -40,7 +40,8 @@ $(document).ready(function() {
     // prevents the clock from being sped up unnecessarily
     var clockRunning = false;
 
-    var timeRemaining = 5;
+    var nn = 20;
+    var timeRemaining = nn;
     var answersVar;
 
     var slides;
@@ -60,6 +61,11 @@ $(document).ready(function() {
 
     let index = 0;
 
+    let delay = 2000;
+
+    let message = "";
+    var isOutOfTime = false;
+
     $('#btn-start').on('click', function(){
 
         $(".quiz-container").css("display", "block");
@@ -68,13 +74,7 @@ $(document).ready(function() {
         // erase button
         $('#btn-start').css('display', 'none');
 
-        // Use setInterval to start the count here and set the clock to running.
-        // if (!clockRunning) {
-        //     intervalId = setInterval(count, 1000);
-        //     clockRunning = true;
-        //   }
-        // count();
-        
+        start();
         
         var $gameDiv = $('#quiz');
 
@@ -124,21 +124,30 @@ $(document).ready(function() {
 
         if(correctBoolean)
             label.text("Correct");
-        else{
-            label.text("Oops!");
+        else if(!isOutOfTime) {
+            message = "Oops!";
+            label.text(message);
             result.text(labelText + " " + correctAnswerString);
         }
+        else {
+            label.text("Out of Time!");
+            result.text(labelText + " " + correctAnswerString);
+        }
+
+        correctBoolean = false;
     }
 
     var next = function(){
         pagination(currSlide + 1);
         showResult();
-        setTimeout(function(){pagination(currSlide + 1)}, 2000);
+        setTimeout(function(){pagination(currSlide + 1)}, delay);
     }
 
     var isCorrect = function(){
+        stop();
+        reset();
+        
         // code here
-        clearInterval(intervalId);
         
         //var questionNumber = parseInt($(this).attr("data-number"));
         correctAnsLetter = myQuestions[index].correctAns;
@@ -148,17 +157,31 @@ $(document).ready(function() {
 
         if (userChoice === correctAnsLetter) correctBoolean = true;
         next();
+        setTimeout(start, delay);
         
     }
 
     // Generic function for displaying the movieInfo
     $(document).on("click", ".answer", isCorrect);
 
-    function reset(){
-        timeRemaining = 5;
+    function start(){
+        
+        // Use setInterval to start the count here and set the clock to running.
+        if (!clockRunning) {
+            count();
+            intervalId = setInterval(count, 1000);
+            clockRunning = true;
+        }
     }
     
+    function stop(){
+        clearInterval(intervalId);
+        clockRunning = false;
+    }
     
+    function reset(){
+        timeRemaining = nn;
+    }
     function count() {
         //  TODO: increment time by 1, remember we cant use "this" here.
         
@@ -170,11 +193,19 @@ $(document).ready(function() {
         // display rule #1
         $timeRemainingDiv.html($timeRmn);
         timeRemaining--;
-        if(timeRemaining == -1){ // runs out of time
-            clearInterval(intervalId);
-            next();
-            reset();
-        }
+        
     
     }
+
+    function checktime(){
+        if(timeRemaining == -1){ // runs out of time
+            isOutOfTime = true;
+            reset();
+            stop();
+            next();
+            setTimeout(start, delay);
+        }
+    }
+
+    setInterval(checktime,1000);
 });
