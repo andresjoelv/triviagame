@@ -10,3 +10,5 @@
  
  ## Who maintains and contributes to the project?
  Andres Villamarin.
+
+![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
