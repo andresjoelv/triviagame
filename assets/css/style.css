@@ -1,19 +1,129 @@
-a {
-    padding:  10px;
-    background: #f44336;
-    color: #fff;
-    border: 1px solid red;
+@import url(https://fonts.googleapis.com/css?family=Work+Sans:300,600);
+
+html{
+    /*background-image: url(../images/bg_large-2.jpg);*/
+    background-color: #202360;
+    color: #fcf2ed;
 }
 
-a:hover, a:visited{
+body {
+	font-size: 20px;
+	font-family: 'Work Sans', sans-serif;
+	color: #333;
+    font-weight: 300;
+    text-align: center;
+    background-color: #ff5405;
+}
+
+.friends-img {
+    background-color: black;
+    width: 700px;
+    padding: 20px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.friends-img img{
+    width: 700px;
+}
+
+#time-remaining {
+    text-align: center;
+    border-radius: 5px;
+    margin: 0 auto;
+    width: 50px;
+    background-color: white;
+    padding: 5px;
+}
+
+#countdown {
+    font-weight: bold;
+}
+
+.last-seconds{
+    
+    color: red;
+}
+
+.beating {
+    animation: beat .25s infinite alternate;
+	transform-origin: center;
+}
+
+/* Heart beat animation */
+@keyframes beat{
+	to { transform: scale(1.4); }
+}
+
+ 
+
+/*
+start btn 
+*/
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #f44336;
+}
+
+.button:hover {
+    background-color: #f44336;
+    color: white;
+}
+
+a {
+    color: white;
+}
+
+
+li:hover, li:visited{
     background-color: red;
 }
 
+ul {
+    list-style-type: none;
+}
 ul li {
-    list-style: none;
-    margin-bottom: 22px;
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 400px;
+    background: #c60b0b;
+    text-align: center;
+} 
+
+
+.question {
+    font-size: 35px;
+    margin-bottom: 10px;
+    color: white;
 }
 
+.answers {
+    text-align: left;
+    display: inline-block;
+}
+
+#result {
+    color: white;
+    font-size: 20px;
+}
+
+  
 /*
  pagination css
  */
@@ -25,7 +135,7 @@ ul li {
      width: 100%;
      z-index: 1;
      opacity: 0;
-     transition: opacity 0.5s;   
+     transition: opacity 0.5s;
  }
 
  .active-slide {
@@ -36,10 +146,38 @@ ul li {
  .quiz-container {
      display: none;
      position: relative;
-     height: 200px;
-     margin-top: 40px;
+     height: 400px;
  }
 
- /* answerSlide */
- 
+.startBtn {
+     margin: 0 auto;
+     width: 300px;
+     background-color: red;
+     padding: 10px;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+     font-weight: bold;
+    -webkit-transition: font-size 0.3s;
+    color:white;
+     
+ }
+
+ .startBtn:hover {
+     font-size: 25px;
+ }
+
+ /*
+ * HELP
+ */
+ #help {
+     text-align: right;
+    position: absolute;
+    top: 40%;
+    left: -360px;
+    padding: 20px;
+    width: 300px;
+    background: #202360;
+    color: white;
+ }
+
+
  

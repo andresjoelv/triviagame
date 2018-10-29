@@ -9,15 +9,24 @@
     
 </head>
 <body>
-    <section>
-        <h1>Totally Trivial Trivia!</h1>
-        <div id="time-remaining"></div>
-        <div class="quiz-container">
-            <div id="quiz">
-            </div>
-        </div>
-        <button id="btn-start">Start</button>
-    </section>
+
+    <audio controls loop>
+      <source src="assets/mp3/Friends_Theme_Song_Instrumental.mp3" type="audio/mp3"/>
+    </audio>
+
+    <div class="friends-img">
+        <img src="assets/images/bg.jpg">
+    </div>
+    <h1>Totally Trivial Trivia!</h1>
+    <div id="time-remaining"><div id="countdown"></div></div>
+    <hr>
+    <div class="quiz-container">
+        <div id="quiz"></div>
+        <div id="result"></div>
+        <div class="helpBtn" id='help'>you got this!</div>
+    </div>
+    <div id="btn-start" class="startBtn">Start</div>
+    
 
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
