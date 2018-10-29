@@ -11,4 +11,4 @@
  ## Who maintains and contributes to the project?
  Andres Villamarin.
 
-[dumbnail](https://github.com/andresjoelv/triviagame/blob/master/assets/images/dumbnail.PNG)
+[screenshot](https://github.com/andresjoelv/triviagame/blob/master/assets/images/dumbnail.PNG)
